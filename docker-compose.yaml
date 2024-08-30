@@ -1,0 +1,54 @@
+version: "3.9"
+
+networks:
+  dev:
+
+services:
+  backend-app:
+    build: backend/
+    container_name: back-app
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    networks:
+      - dev
+
+#  frontend-app:
+#    build: frontend/
+#    container_name: front-app
+#    restart: unless-stopped
+#    depends_on:
+#      - postgres
+#      - backend-app
+#    networks:
+#      - dev
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "RTL"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - dev
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    depends_on:
+#      - frontend-app
+      - backend-app
+    volumes:
+      - "./nginx.conf:/etc/nginx/nginx.conf"
+      - "/etc/letsencrypt:/etc/letsencrypt"
+    networks:
+      - dev
+
+volumes:
+  postgres_data:
