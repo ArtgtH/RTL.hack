@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from src.DB.models import Status
 
 
@@ -19,8 +19,7 @@ class UserCreate(UserBase): ...
 class User(UserBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class TaskBase(BaseModel):

@@ -32,7 +32,7 @@ class AsyncORM:
             result = await session.execute(query)
             user = result.scalar_one_or_none()
             if not user or user.password != password:
-                return Exception("wrong username or password")
+                return None
             return user
 
     @staticmethod
