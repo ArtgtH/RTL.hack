@@ -10,10 +10,12 @@ class UserBase(BaseModel):
     password: str
 
 
-class UserLogin(UserBase): ...
+class UserLogin(UserBase):
+    pass
 
 
-class UserCreate(UserBase): ...
+class UserCreate(UserBase):
+    pass
 
 
 class User(UserBase):
