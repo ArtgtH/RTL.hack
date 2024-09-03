@@ -1,16 +1,18 @@
+import asyncio
 from typing import List
 
 from fastapi import status, APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 from src.DB.commands import AsyncORM
 from src.internal import schemas
+from src.ML.executor import TaskExecutor
 
 router = APIRouter(prefix="/api", tags=["api"])
 
 
 @router.on_event("startup")
 async def startup():
-	await AsyncORM.recreate_tables()
+	await AsyncORM.create_tables()
 
 
 @router.post("/users/register", response_model=schemas.User)
@@ -32,6 +34,7 @@ async def login(user: schemas.UserLogin):
 @router.post("/tasks", response_model=schemas.Task)
 async def create_task(task: schemas.TaskCreate):
 	new_task = await AsyncORM.insert_task(task.input_data, task.user_id)
+	await TaskExecutor(new_task).execute()
 	return new_task
 
 
