@@ -5,43 +5,47 @@ from pydantic import BaseModel, ConfigDict
 from src.DB.models import Status
 
 
+class TaskCreationResult(BaseModel):
+	result: bool
+
+
 class UserBase(BaseModel):
-    username: str
-    password: str
+	username: str
+	password: str
 
 
 class UserLogin(UserBase):
-    pass
+	pass
 
 
 class UserCreate(UserBase):
-    pass
+	pass
 
 
 class User(UserBase):
-    id: int
+	id: int
 
-    model_config = ConfigDict(from_attributes=True)
+	model_config = ConfigDict(from_attributes=True)
 
 
 class TaskBase(BaseModel):
-    input_data: str
-    user_id: int
+	input_data: str
+	user_id: int
 
 
 class TaskCreate(TaskBase):
-    pass
+	pass
 
 
 class Task(TaskBase):
-    id: int
-    created_at: datetime
-    result: Optional[str] = None
-    status: Status
-    user_id: int
+	id: int
+	created_at: datetime
+	result: Optional[str] = None
+	status: Status
+	user_id: int
 
-    class Config:
-        orm_mode = True
+	class Config:
+		orm_mode = True
 
 
 User.update_forward_refs()

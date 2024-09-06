@@ -5,6 +5,7 @@ from src.DB.commands import AsyncORM
 from src.internal import schemas
 from src.ML.executor import TaskExecutor
 
+
 router = APIRouter(prefix="/api", tags=["api"])
 
 
@@ -19,21 +20,21 @@ async def create_user(user: schemas.UserCreate):
     return new_user
 
 
-@router.post("/users/login")
+@router.post("/users/login", response_model=schemas.User)
 async def login(user: schemas.UserLogin):
     if result := await AsyncORM.check_user(user.username, user.password):
-        return schemas.User.model_validate(result)
+        return result
     raise HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Incorrect username or password",
     )
 
 
-@router.post("/tasks")
+@router.post("/tasks", response_model=schemas.TaskCreationResult)
 async def create_task(task: schemas.TaskCreate, background_tasks: BackgroundTasks):
     new_task = await AsyncORM.insert_task(task.input_data, task.user_id)
     background_tasks.add_task(TaskExecutor(new_task).execute)
-    return {"result": "task successfully created"}
+    return schemas.TaskCreationResult(result=True)
 
 
 @router.get("/tasks", response_model=List[schemas.Task])
