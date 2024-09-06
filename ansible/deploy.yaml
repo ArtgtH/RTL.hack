@@ -1,0 +1,42 @@
+---
+- name: playbook with deployment tasks
+  hosts: your-host
+  gather_facts: no
+  vars:
+    path: /home/projects/
+    use_docker: true
+  tasks:
+    - name: clone repository
+      git:
+        repo: https://github.com/ArtgtH/RTL.hack.git
+        dest: "{{ path }}"
+        version: main
+        update: yes
+      tags: clone-repo
+
+
+    - name: clear docker context
+      community.docker.docker_prune:
+        containers: yes
+        images: yes
+        networks: yes
+        volumes: yes
+        builder_cache: yes
+      tags: clear-context
+
+
+    - name: start container
+      community.docker.docker_compose:
+        project_src: "{{ path }}"
+        build: yes
+      when: use_docker
+      tags: start-with-docker
+
+
+    - name: make start
+      command: make build
+      args:
+        chdir: "{{ path }}"
+      when: not use_docker
+      tags: start-with-make
+

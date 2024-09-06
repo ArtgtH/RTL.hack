@@ -59,3 +59,13 @@ class AsyncORM:
             result = await session.execute(query)
             task = result.scalar_one_or_none()
             return task
+
+    @staticmethod
+    async def update_task(idx: int, status: str, res: str):
+        async with async_session_factory() as session:
+            query = select(Task).filter(Task.id == idx)
+            result = await session.execute(query)
+            task = result.scalar_one_or_none()
+            task.status = status
+            task.result = res
+            await session.commit()
