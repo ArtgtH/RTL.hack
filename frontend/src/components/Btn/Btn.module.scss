@@ -1,0 +1,36 @@
+.btn {
+    min-width: 160px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tonal {
+    padding: 8px 65px 8px 65px;
+    border: 2px solid #F63E3E;
+    color: #F63E3E;
+    background-color: #FFFFFF;
+    transition: 0.1s;
+    &:hover {
+        background-color: #F63E3E;
+        color: white;
+    }
+}
+.outlined {
+    padding: 8px 65px 8px 65px;
+    background-color: #F63E3E;
+    color: #FFFFFF;
+    transition: 0.2s;
+    &:hover {
+        box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+.text {
+    color: #F63E3E;
+    transition: 0.1s;
+    &:hover {
+        color: black;
+    }
+}

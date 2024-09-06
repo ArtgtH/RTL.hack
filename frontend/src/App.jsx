@@ -1,5 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import viteLogo from '/vite.svg'
+import './app.css'
+import SignUpPage from './components/SignUpPage/SignUpPage'
+import SignInPage from './components/SignInPage/SignInPage'
 
 
 function App() {
@@ -9,18 +11,14 @@ function App() {
     {
       path: "/sign-up",
       element: (
-        <div>
-          <h1>Sign Up</h1>
-        </div>
+        <SignUpPage/>
       ),
     },
     // вход
     {
       path: "/sign-in",
       element: (
-        <div>
-          <h1>Sign In</h1>
-        </div>
+       <SignInPage/>
       ),
     },
     // отправка данных
