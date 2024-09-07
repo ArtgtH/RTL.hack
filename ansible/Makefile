@@ -1,4 +1,4 @@
-install-role:
+install-collections:
 	ansible-galaxy install -r requirements.yaml
 
 install-git-docker:
