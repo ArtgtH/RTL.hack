@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './app.css'
 import SignUpPage from './components/SignUpPage/SignUpPage'
 import SignInPage from './components/SignInPage/SignInPage'
+import DataPage from './components/DataPage/DataPage'
 
 
 function App() {
@@ -25,9 +26,7 @@ function App() {
     {
       path: "/data",
       element: (
-        <div>
-          <h1>*Инпуты*</h1>
-        </div>
+        <DataPage />
       ),
     },
     // просмотр результатов

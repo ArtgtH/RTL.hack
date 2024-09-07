@@ -22,7 +22,9 @@ function SignUpPage() {
 					username: data.login,
 					password: data.password1
 				})
-			}).then(res => {
+			}).then(async res => {
+				const data = await res.json();
+				localStorage.setItem('user_id', data)
 				if (res.status === 200) {
 					navigate('/data')
 				}

@@ -20,10 +20,12 @@ function SignInPage() {
 					password: data.password
 				})
 		})
-		.then(res => {
+		.then(async res => {
 			if (res.status === 401){
                 setError('password', {type: 'custom', message: 'Вы не зарегистрированы'})
             } else if (res.status === 200){
+				const data = await res.json();
+				localStorage.setItem('user_id', data)
 				navigate('/data')
             }
 		})
