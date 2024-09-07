@@ -1,27 +1,35 @@
-FROM node:18 as build
+# Шаг 1: Используем Node.js для сборки приложения
+FROM node:18 AS build
 
-# Set the working directory in the container
+# Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
+# Копируем package.json и package-lock.json (или yarn.lock)
 COPY package*.json ./
 
-# Install dependencies
+# Устанавливаем зависимости
 RUN npm install
 
-# Copy the entire application code to the container
-COPY . ./
+# Копируем исходный код приложения
+COPY . .
 
-# Build the React app for production
+# Сборка приложения Vite
 RUN npm run build
 
-CMD cp -r dist result_build
+# Шаг 2: Создаем этап для запуска продакшн-версии приложения
+FROM node:18 AS production
 
-# Use Nginx as the production server
-# FROM nginx:alpine
+# Устанавливаем рабочую директорию
+WORKDIR /app
 
-# Copy the built React app to Nginx's web server directory
-# COPY --from=build /app/dist /usr/share/nginx/html
+# Копируем собранное приложение из предыдущего этапа
+COPY --from=build /app/dist ./dist
 
-# Start Nginx when the container runs
-# CMD ["nginx", "-g", "daemon off;"]
+# Устанавливаем serve - небольшой сервер для сервировки статических файлов
+RUN npm install -g serve
+
+# Открываем порт для доступа к приложению
+EXPOSE 5173
+
+# Запускаем сервер для статики на порту 5173
+CMD ["serve", "-s", "dist", "-l", "5173"]

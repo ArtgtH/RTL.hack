@@ -1,0 +1,36 @@
+.page{
+	background-image: linear-gradient(157deg, hsl(0, 0%, 100%) 37%, hsl(0deg 100% 93.79%) 69%, hsl(4deg 90.71% 85.26%) 81%, hsl(5deg 79.05% 80.73%) 88%, hsl(5deg 100% 80.42%) 92%, hsl(6deg 100% 75.59%) 95%, hsl(6deg 87.67% 70.3%) 97%, hsl(7deg 100% 72.02%) 99%, rgb(255 94 72) 100%, #f85858 100%, #f34d4d 100%, #ff7777 100%);
+	height: 100vh;
+}
+.wrapper {
+	padding-top: 89px;
+	padding-bottom: 154px;
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 400px;
+	margin: 0 auto;
+}
+.title{
+	font-weight: 700px;
+	font-size: 40px;
+	font-weight: 300px;
+}
+.icons_wrapper{
+	display: flex;
+	gap: 25px;
+}
+.inputs{
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}
+.btn{
+	width: 239px;
+	background-color: #FE5E48;
+	color: #FFFFFF;
+	font-size: 16px;
+	border-radius: 30px;
+	height: 42px;
+	cursor: pointer;
+}
