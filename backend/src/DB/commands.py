@@ -36,9 +36,9 @@ class AsyncORM:
             return user
 
     @staticmethod
-    async def insert_task(input_data: str, user_id: int):
+    async def insert_task(pn_lot: str, suppliers_number: int, user_id: int):
         async with async_session_factory() as session:
-            new_task = Task(input_data=input_data, user_id=user_id)
+            new_task = Task(pn_lot=pn_lot, suppliers_number=suppliers_number, user_id=user_id)
             session.add(new_task)
             await session.commit()
             await session.refresh(new_task)

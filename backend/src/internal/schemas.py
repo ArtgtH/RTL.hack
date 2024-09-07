@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 from pydantic import BaseModel, ConfigDict
 from src.DB.models import Status
@@ -29,7 +29,8 @@ class User(UserBase):
 
 
 class TaskBase(BaseModel):
-	input_data: str
+	pn_lot: str
+	suppliers_number: int
 	user_id: int
 
 
@@ -37,12 +38,15 @@ class TaskCreate(TaskBase):
 	pass
 
 
-class Task(TaskBase):
+class ResultLine(BaseModel):
+	purchase_name: List[str]
+
+
+class TaskResult(TaskBase):
 	id: int
 	created_at: datetime
-	result: Optional[str] = None
+	result: List[ResultLine]
 	status: Status
-	user_id: int
 
 	class Config:
 		orm_mode = True
