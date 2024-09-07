@@ -30,6 +30,6 @@ async def login(user: schemas.UserLogin):
 
 @router.post("/tasks", response_model=schemas.TaskResult)
 async def create_task(task: schemas.TaskCreate):
-    new_task = await AsyncORM.insert_task(task.pn_lot, task.suppliers_number, task.user_id)
+    new_task = await AsyncORM.insert_task(task.pn_lot, 5, task.user_id)
     result = await TaskExecutor(new_task).execute()
     return result
