@@ -27,11 +27,25 @@ def calculate_distance_stats(regions: list, target_region: int) -> tuple:
     min_distance = min(distances)
     avg_distance = sum(distances) / len(distances)
 
-    return min_distance, avg_distance
+    return min_distance, avg_distance, len(distances)
 
 
-# Пример использования
-# regions = [1, 2]
+def get_region_for_supplier(supplier: str, file_path=r'utils\supplier_regions.json') -> list:
+    script_dir = os.path.dirname(__file__)
+    file_path = os.path.join(script_dir, file_path)
+    with open(file_path, 'r', encoding='utf-8') as file:
+        supplier_region = json.load(file)
+    regions = supplier_region.get(str(supplier))
+    return regions
+
+
+def get_dists_for_supplier(supplier: str, target_region: int) -> tuple:
+    regions = get_region_for_supplier(supplier=supplier)
+
+    return calculate_distance_stats(regions=regions, target_region=target_region)
+
+
+# # Пример использования
+# supplier = 'Поставщик_18354'
 # target_region = 3
-# min_distance, avg_distance = calculate_distance_stats(regions, target_region)
-# print(f"Тест 1: Минимальное расстояние: {min_distance}, Среднее расстояние: {avg_distance}")
+# print(get_dists_for_supplier(supplier=supplier, target_region=target_region))
