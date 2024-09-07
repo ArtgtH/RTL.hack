@@ -1,0 +1,49 @@
+.row{
+	border-bottom: 1px solid #CFD3D5;
+	display: grid;
+	padding-left: 32px;
+	gap: 16px;
+	text-decoration: none;
+	cursor: pointer;
+	color: black;
+}
+.vertical{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start !important;
+}
+.cell{
+	padding: 10px 0px;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 16px;
+	display: flex;
+	align-items: center;
+}
+.status{
+	display: flex;
+	gap: 7px;
+	align-items: center;
+	&__text{
+		text-transform: capitalize;
+	}
+	&__dot{
+		height: 8px;
+		width: 8px;
+		border-radius: 50%;
+	}
+}
+.download{
+	cursor: pointer;
+}
+.restoreModal{
+	width: 495px !important;
+	div{
+		align-self:center !important;
+	}
+}
+.diffModal{
+	min-height: 400px;
+	max-height: 600px;
+	justify-content: space-between;
+}

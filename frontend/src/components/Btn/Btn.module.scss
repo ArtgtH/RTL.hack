@@ -9,18 +9,18 @@
 }
 .tonal {
     padding: 8px 65px 8px 65px;
-    border: 2px solid #F63E3E;
-    color: #F63E3E;
+    border: 2px solid #1b6db9;
+    color: #1b6db9;
     background-color: #FFFFFF;
     transition: 0.1s;
     &:hover {
-        background-color: #F63E3E;
+        background-color: #1b6db9;
         color: white;
     }
 }
 .outlined {
     padding: 8px 65px 8px 65px;
-    background-color: #F63E3E;
+    background-color: #1b6db9;
     color: #FFFFFF;
     transition: 0.2s;
     &:hover {
@@ -28,7 +28,7 @@
     }
 }
 .text {
-    color: #F63E3E;
+    color: #1b6db9;
     transition: 0.1s;
     &:hover {
         color: black;

@@ -1,0 +1,29 @@
+.table{
+	border: 1px solid #CFD3D5;
+	border-radius: 30px;
+	padding-bottom: 30px;
+	max-width: 1440px;
+}
+
+.head{
+	display: grid;
+	gap: 16px;
+	padding-left: 32px;
+	border-top-right-radius: 30px;
+	border-top-left-radius: 30px;
+}
+.column{
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 16px;
+	padding: 16px 0px;
+}
+.body{
+	display: flex;
+	flex-direction: column;
+}
+.not_found{
+	font-size: 24px;
+	text-align: center;
+	padding: 10px 0px;
+}

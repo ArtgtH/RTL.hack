@@ -25,7 +25,7 @@ function SignInPage() {
                 setError('password', {type: 'custom', message: 'Вы не зарегистрированы'})
             } else if (res.status === 200){
 				const data = await res.json();
-				localStorage.setItem('user_id', data)
+				localStorage.setItem('user_id', data.id)
 				navigate('/data')
             }
 		})

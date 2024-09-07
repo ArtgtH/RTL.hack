@@ -24,7 +24,7 @@ function SignUpPage() {
 				})
 			}).then(async res => {
 				const data = await res.json();
-				localStorage.setItem('user_id', data)
+				localStorage.setItem('user_id', data.id)
 				if (res.status === 200) {
 					navigate('/data')
 				}
