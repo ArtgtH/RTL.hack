@@ -24,7 +24,6 @@ function DataPage() {
 			},
 			body: JSON.stringify({
 				pn_lot: data?.pn_lot.toString(),
-				suppliers_number: Number(data?.suppliers_number),
 				user_id: Number(localStorage.getItem('user_id'))
 			})
 		})
@@ -57,7 +56,6 @@ function DataPage() {
 				 onSubmit={handleSubmit(onSubmit)}
 				>
 					<TextInput name="pn_lot" width="400px" label="Идентификатор" />
-					<TextInput name="suppliers_number" width="400px" label="Максимальное кол-во товаров" />
 				</form>
 			</FormProvider>
 			<button form="data" className={styles.btn} type="submit">

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './TableRow.module.scss'
 
 function TableRow({item}) {
-	const customers = item?.customers?.map((customer, index) => <p className={styles.customer} key={index}>{customer[0]} {customer[1]}</p>)
+	// const customers = item?.customers?.map((customer, index) => <p className={styles.customer} key={index}>{customer[0]} {customer[1]}</p>)
 	console.log(item);
   return (
 	<div
@@ -10,10 +10,10 @@ function TableRow({item}) {
         style={{ gridTemplateColumns: `repeat(2, 1fr)` }}
     >
         <div className={`${styles.cell} ${styles.vertical}`}>
-			{customers}
+			{item.suppliers[0]}
         </div>
 		<div className={`${styles.cell}`}>
-			{item.purchase_name}
+			{item.suppliers[1]}
         </div>
       </div>
   )

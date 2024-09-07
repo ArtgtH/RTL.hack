@@ -5,7 +5,7 @@ import TableRow from '../TableRow/TableRow'
 const Table = memo(({items}) => {
 	const column_names = [
 		{ value: 'Название поставщика'},
-		{ value: 'Название товара', },
+		{ value: 'Точность', },
 	]
 	
 	const columns = column_names.map((item, index) => <div key={index} className={styles.column}>{item.value}</div>)
