@@ -9,7 +9,7 @@ router = APIRouter(prefix="/api", tags=["api"])
 
 @router.on_event("startup")
 async def startup():
-    await AsyncORM.recreate_tables()
+    await AsyncORM.create_tables()
 
 
 @router.post("/users/register", response_model=schemas.User)
