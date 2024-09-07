@@ -13,7 +13,7 @@ function ResultPage() {
 	  		<p className={styles.title}>Максимальное количество товаров: {user?.suppliers_number}</p>
 		</div>
 		<div className={styles.table}>
-			<Table items={user?.result}/>
+			<Table items={user?.result?.suppliers}/>
 		</div>
 	 </div>
 	</div>

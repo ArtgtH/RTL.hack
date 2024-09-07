@@ -10,10 +10,10 @@ function TableRow({item}) {
         style={{ gridTemplateColumns: `repeat(2, 1fr)` }}
     >
         <div className={`${styles.cell} ${styles.vertical}`}>
-			{item.suppliers[0]}
+			{item[0]}
         </div>
 		<div className={`${styles.cell}`}>
-			{item.suppliers[1]}
+			{item[1]}
         </div>
       </div>
   )
