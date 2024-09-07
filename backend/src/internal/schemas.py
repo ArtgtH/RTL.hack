@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional, List, Dict
 
 from pydantic import BaseModel, ConfigDict
 from src.DB.models import Status
@@ -37,14 +37,15 @@ class TaskCreate(TaskBase):
 	user_id: int
 
 
-class ResultLine(BaseModel):
-	purchase_name: List[str]
+class PurchaseTask(BaseModel):
+	purchase_name: str
+	customers: List[str]
 
 
 class TaskResult(TaskBase):
 	id: int
 	created_at: datetime
-	result: List[ResultLine]
+	result: List[PurchaseTask]
 	status: Status
 
 	class Config:

@@ -1,5 +1,3 @@
-from typing import List
-
 from fastapi import status, APIRouter, HTTPException, BackgroundTasks
 from src.DB.commands import AsyncORM
 from src.internal import schemas
@@ -33,5 +31,5 @@ async def login(user: schemas.UserLogin):
 @router.post("/tasks", response_model=schemas.TaskResult)
 async def create_task(task: schemas.TaskCreate):
     new_task = await AsyncORM.insert_task(task.pn_lot, task.suppliers_number, task.user_id)
-    await TaskExecutor(new_task).execute()
-    return schemas.TaskCreationResult(result=True)
+    result = await TaskExecutor(new_task).execute()
+    return result
