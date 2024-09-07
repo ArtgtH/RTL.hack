@@ -31,11 +31,10 @@ class User(UserBase):
 class TaskBase(BaseModel):
 	pn_lot: str
 	suppliers_number: int
-	user_id: int
 
 
 class TaskCreate(TaskBase):
-	pass
+	user_id: int
 
 
 class ResultLine(BaseModel):
