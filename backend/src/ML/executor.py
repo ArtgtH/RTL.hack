@@ -19,9 +19,9 @@ class TaskExecutor:
 		status = random.choice([Status.COMPLETED, Status.FAILED])
 		self.task.status = status
 		var = [
-			"Заказчик_21466",
-			"Заказчик_49785",
-			"Заказчик_64411",
+			["Заказчик_21466", "wow"],
+			["Заказчик_21466", "not wow"],
+			["Заказчик_21466", "bad"],
 		]
 		self.task.result = [
 			{

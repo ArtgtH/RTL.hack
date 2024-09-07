@@ -39,7 +39,7 @@ class TaskCreate(TaskBase):
 
 class PurchaseTask(BaseModel):
 	purchase_name: str
-	customers: List[str]
+	customers: List[List[str]]
 
 
 class TaskResult(TaskBase):
