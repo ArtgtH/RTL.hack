@@ -10,7 +10,7 @@ function ResultPage() {
 	 <div className={styles.wrapper}>
 	 	<div>
 			<p className={styles.title}>Идентификатор: {user?.pn_lot}</p>
-	  		<p className={styles.title}>Максимальное количество товаров: {user?.suppliers_number}</p>
+	  		{/* <p className={styles.title}>Максимальное количество товаров: {user?.suppliers_number}</p> */}
 		</div>
 		<div className={styles.table}>
 			<Table items={user?.result[0]?.suppliers}/>
